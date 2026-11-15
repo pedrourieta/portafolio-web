@@ -6,17 +6,21 @@
     <meta name="description" content="Servicios de diseño de interfaces y bases de datos.">
     <title>Servicios | Pedro Urieta - Diseñador Web</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
     <header class="cabecera">
         <a href="index.html"><img id="logo" src="img/logo.svg" alt="Logotipo de Pedro Urieta, diseñador web"></a>
-        <nav class="menu">
+        <button class="menu-boton" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu-principal">
+            <span></span><span></span><span></span>
+        </button>
+        <nav class="menu" id="menu-principal" aria-label="Menú principal">
             <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="sobre-mi.html">Sobre mí</a></li>
-            <li><a href="servicios.html" class="activo">Servicios</a></li>
-            <li><a href="portafolio.html">Portafolio</a></li>
-            <li><a href="contacto.html">Contacto</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="sobre-mi.html">Sobre mí</a></li>
+                <li><a href="servicios.html" class="activo" aria-current="page">Servicios</a></li>
+                <li><a href="portafolio.html">Portafolio</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
             </ul>
         </nav>
     </header>
@@ -30,7 +34,7 @@
                 <img src="img/servicio-interfaces.svg" alt="Ilustración de una pantalla con el diseño de una interfaz web">
                 <div>
                     <h2>Diseño de interfaces</h2>
-                    <p>Diseño pantallas ordenadas, con colores y tipografías coherentes, pensadas para que el usuario encuentre lo que busca en pocos clics.</p>
+                    <p>Diseño pantallas ordenadas, con colores y tipografías coherentes, pensadas para que el usuario encuentre lo que busca en pocos clics y desde cualquier dispositivo.</p>
                 </div>
             </article>
 
@@ -50,7 +54,7 @@
             <a href="https://www.instagram.com/" target="_blank"><img src="img/instagram.svg" alt="Ícono de Instagram"></a>
         </div>
         <p>&copy; 2026 Pedro Ezequiel Urieta Fuentes</p>
-        <a href="https://wa.me/527771234567" target="_blank"><img src="img/chat.svg" alt="Ícono de chat para enviar un mensaje"></a>
+        <a class="chat" href="https://wa.me/527771234567" target="_blank"><img src="img/chat.svg" alt="Ícono de chat para enviar un mensaje"></a>
     </footer>
 </body>
 </html>

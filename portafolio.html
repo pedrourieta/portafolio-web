@@ -6,17 +6,21 @@
     <meta name="description" content="Proyectos realizados por Pedro Urieta.">
     <title>Portafolio | Pedro Urieta - Diseñador Web</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
     <header class="cabecera">
         <a href="index.html"><img id="logo" src="img/logo.svg" alt="Logotipo de Pedro Urieta, diseñador web"></a>
-        <nav class="menu">
+        <button class="menu-boton" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu-principal">
+            <span></span><span></span><span></span>
+        </button>
+        <nav class="menu" id="menu-principal" aria-label="Menú principal">
             <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="sobre-mi.html">Sobre mí</a></li>
-            <li><a href="servicios.html">Servicios</a></li>
-            <li><a href="portafolio.html" class="activo">Portafolio</a></li>
-            <li><a href="contacto.html">Contacto</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="sobre-mi.html">Sobre mí</a></li>
+                <li><a href="servicios.html">Servicios</a></li>
+                <li><a href="portafolio.html" class="activo" aria-current="page">Portafolio</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
             </ul>
         </nav>
     </header>
@@ -27,19 +31,24 @@
             <div class="galeria">
                 <article class="proyecto">
                     <img src="img/proyecto1.svg" alt="Captura ilustrativa de la aplicación RunTrack">
-                    <h2>Proyecto 1</h2>
-                    <p>RunTrack, app de monitoreo deportivo.</p>
+                    <h2>RunTrack</h2>
+                    <p>App de monitoreo deportivo.</p>
                     <a href="https://github.com/pedrourieta/RunTrack" target="_blank">Ver en GitHub</a>
                 </article>
                 <article class="proyecto">
                     <img src="img/proyecto2.svg" alt="Captura ilustrativa de una tienda en línea">
-                    <h2>Proyecto 2</h2>
-                    <p>Maqueta de tienda en línea.</p>
+                    <h2>Tienda en línea</h2>
+                    <p>Maqueta de comercio electrónico.</p>
                 </article>
                 <article class="proyecto">
                     <img src="img/proyecto3.svg" alt="Captura ilustrativa de un panel de control con gráficas">
-                    <h2>Proyecto 3</h2>
-                    <p>Panel de control con gráficas.</p>
+                    <h2>Panel de control</h2>
+                    <p>Tablero con gráficas de ventas.</p>
+                </article>
+                <article class="proyecto">
+                    <img src="img/proyecto4.svg" alt="Captura ilustrativa de una página de aterrizaje">
+                    <h2>Página de aterrizaje</h2>
+                    <p>Sitio promocional de una sola página.</p>
                 </article>
             </div>
         </section>
@@ -51,7 +60,7 @@
             <a href="https://www.instagram.com/" target="_blank"><img src="img/instagram.svg" alt="Ícono de Instagram"></a>
         </div>
         <p>&copy; 2026 Pedro Ezequiel Urieta Fuentes</p>
-        <a href="https://wa.me/527771234567" target="_blank"><img src="img/chat.svg" alt="Ícono de chat para enviar un mensaje"></a>
+        <a class="chat" href="https://wa.me/527771234567" target="_blank"><img src="img/chat.svg" alt="Ícono de chat para enviar un mensaje"></a>
     </footer>
 </body>
 </html>

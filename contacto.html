@@ -6,17 +6,21 @@
     <meta name="description" content="Datos de contacto y formulario de Pedro Urieta.">
     <title>Contacto | Pedro Urieta - Diseñador Web</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
     <header class="cabecera">
         <a href="index.html"><img id="logo" src="img/logo.svg" alt="Logotipo de Pedro Urieta, diseñador web"></a>
-        <nav class="menu">
+        <button class="menu-boton" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu-principal">
+            <span></span><span></span><span></span>
+        </button>
+        <nav class="menu" id="menu-principal" aria-label="Menú principal">
             <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="sobre-mi.html">Sobre mí</a></li>
-            <li><a href="servicios.html">Servicios</a></li>
-            <li><a href="portafolio.html">Portafolio</a></li>
-            <li><a href="contacto.html" class="activo">Contacto</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="sobre-mi.html">Sobre mí</a></li>
+                <li><a href="servicios.html">Servicios</a></li>
+                <li><a href="portafolio.html">Portafolio</a></li>
+                <li><a href="contacto.html" class="activo" aria-current="page">Contacto</a></li>
             </ul>
         </nav>
     </header>
@@ -25,23 +29,27 @@
         <section class="seccion">
             <h1>Contacto</h1>
             <div class="contacto">
-                <div class="datos">
-                    <a href="https://maps.google.com/?q=Universidad+Tecnologica+Emiliano+Zapata" target="_blank"><img src="img/mapa.svg" alt="Mapa de ubicación de la UTEZ en Emiliano Zapata, Morelos"></a>
-                    <h2>Mapa de ubicación</h2>
-                    <p><strong>Dirección:</strong> Av. Universidad Tecnológica No. 1, Palo Escrito, Emiliano Zapata, Mor.</p>
-                    <p><strong>Correo:</strong> <a href="mailto:pedrourieta@utez.edu.mx">pedrourieta@utez.edu.mx</a></p>
-                    <p><strong>Teléfono:</strong> 777 123 4567</p>
-                </div>
                 <form class="formulario" action="#" method="post">
                     <h2>Envíame un mensaje</h2>
                     <label for="nombre"><img src="img/icono-usuario.svg" alt="Ícono de usuario"></label>
-                    <input type="text" id="nombre" name="nombre" placeholder="Nombre" required>
+                    <input type="text" id="nombre" name="nombre" placeholder="Nombre" autocomplete="name" required>
                     <label for="correo"><img src="img/icono-correo.svg" alt="Ícono de correo electrónico"></label>
-                    <input type="email" id="correo" name="correo" placeholder="Correo electrónico" required>
+                    <input type="email" id="correo" name="correo" placeholder="Correo electrónico" autocomplete="email" required>
                     <label for="comentarios" class="etiqueta-texto">Comentarios</label>
                     <textarea id="comentarios" name="comentarios" rows="5"></textarea>
                     <button type="submit" class="boton-primario">Enviar</button>
                 </form>
+                <div class="datos">
+                    <h2>Cómo llegar</h2>
+                    <video controls preload="metadata" poster="img/video-portada.jpg">
+                        <source src="video/como-llegar.mp4" type="video/mp4">
+                        Tu navegador no puede reproducir este video.
+                    </video>
+                    <a class="como-llegar" href="https://maps.google.com/?q=Universidad+Tecnologica+Emiliano+Zapata" target="_blank"><img src="img/icono-ubicacion.svg" alt="Ícono de ubicación"> Cómo llegar en Google Maps</a>
+                    <p><strong>Dirección:</strong> Av. Universidad Tecnológica No. 1, Palo Escrito, Emiliano Zapata, Mor.</p>
+                    <p><strong>Correo:</strong> <a href="mailto:pedrourieta@utez.edu.mx">pedrourieta@utez.edu.mx</a></p>
+                    <p><strong>Teléfono:</strong> <a href="tel:+527771234567">777 123 4567</a></p>
+                </div>
             </div>
         </section>
     </main>
@@ -52,7 +60,7 @@
             <a href="https://www.instagram.com/" target="_blank"><img src="img/instagram.svg" alt="Ícono de Instagram"></a>
         </div>
         <p>&copy; 2026 Pedro Ezequiel Urieta Fuentes</p>
-        <a href="https://wa.me/527771234567" target="_blank"><img src="img/chat.svg" alt="Ícono de chat para enviar un mensaje"></a>
+        <a class="chat" href="https://wa.me/527771234567" target="_blank"><img src="img/chat.svg" alt="Ícono de chat para enviar un mensaje"></a>
     </footer>
 </body>
 </html>

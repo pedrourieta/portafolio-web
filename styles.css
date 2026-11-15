@@ -1,5 +1,6 @@
 /* ==========================================================
    Hoja de estilos del sitio personal de Pedro Urieta
+   Escritorio (base) + celular vertical + celular horizontal
    ========================================================== */
 
 /* Tipografías de Google Fonts */
@@ -8,6 +9,10 @@
 /* ---------- Selectores de tipo ---------- */
 * {
     box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
@@ -51,12 +56,25 @@ a {
     color: #0F7C6E;
 }
 
-img {
+img,
+video {
+    display: block;
     max-width: 100%;
+    height: auto;
+}
+
+/* Contorno visible al navegar con teclado */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid #2EC4B6;
+    outline-offset: 2px;
 }
 
 /* ---------- Encabezado y navegación ---------- */
 .cabecera {
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -66,7 +84,6 @@ img {
 }
 
 #logo {
-    display: block;
     width: 120px;
     height: 48px;
 }
@@ -80,6 +97,7 @@ img {
 }
 
 .menu a {
+    display: block;
     padding: 6px 0;
     color: #1B2A41;
     text-decoration: none;
@@ -92,6 +110,42 @@ img {
     border-bottom: 3px solid #0F7C6E;
 }
 
+/* Botón hamburguesa: oculto en escritorio */
+.menu-boton {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    width: 48px;
+    height: 48px;
+    padding: 10px;
+    background: none;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.menu-boton span {
+    display: block;
+    height: 4px;
+    background-color: #1B2A41;
+    border-radius: 2px;
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+/* El ícono se convierte en "X" cuando el menú está abierto */
+.menu-boton[aria-expanded="true"] span:nth-child(1) {
+    transform: translateY(10px) rotate(45deg);
+}
+
+.menu-boton[aria-expanded="true"] span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-boton[aria-expanded="true"] span:nth-child(3) {
+    transform: translateY(-10px) rotate(-45deg);
+}
+
 /* ---------- Contenido principal ---------- */
 main {
     flex: 1;
@@ -102,7 +156,7 @@ main {
 }
 
 .seccion {
-    margin-bottom: 32px;
+    margin-bottom: 40px;
 }
 
 .texto-centrado {
@@ -113,18 +167,26 @@ main {
 
 /* Home */
 .caja-bienvenida {
-    max-width: 820px;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 40px;
+    align-items: center;
+    max-width: 960px;
     margin: 32px auto 0;
-    padding: 48px 56px;
-    text-align: center;
+    padding: 40px 48px;
     background-color: #FFFFFF;
     border: 2px solid #1B2A41;
     border-radius: 12px;
 }
 
+.imagen-inicio {
+    border-radius: 8px;
+}
+
 /* Botón de llamada a la acción */
 .boton-primario {
     display: inline-block;
+    min-height: 48px;
     margin-top: 12px;
     padding: 12px 32px;
     font-family: "Poppins", Arial, sans-serif;
@@ -143,16 +205,93 @@ main {
     box-shadow: 0 6px 14px rgba(15, 124, 110, 0.45);
 }
 
+/* Carrusel de proyectos */
+.proyectos h2 {
+    text-align: center;
+}
+
+.carrusel {
+    position: relative;
+}
+
+.carrusel-pista {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    padding: 8px 4px 16px;
+    scrollbar-width: none;
+}
+
+.carrusel-pista::-webkit-scrollbar {
+    display: none;
+}
+
+.tarjeta-proyecto {
+    flex: 0 0 calc((100% - 32px) / 3);
+    scroll-snap-align: center;
+    padding: 16px;
+    text-align: center;
+    background-color: #FFFFFF;
+    border: 2px solid #D9DEE5;
+    border-radius: 12px;
+}
+
+.tarjeta-proyecto img {
+    width: 100%;
+    margin-bottom: 12px;
+    border-radius: 8px;
+}
+
+.tarjeta-proyecto p {
+    margin: 0;
+    font-size: 14px;
+}
+
+.carrusel-flecha {
+    position: absolute;
+    top: 40%;
+    z-index: 2;
+    width: 44px;
+    height: 44px;
+    font-size: 18px;
+    color: #FFFFFF;
+    background-color: rgba(27, 42, 65, 0.85);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.carrusel-flecha:hover {
+    background-color: #0F7C6E;
+}
+
+.anterior {
+    left: -22px;
+}
+
+.siguiente {
+    right: -22px;
+}
+
 /* Sobre mí */
 .perfil {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 48px;
+    gap: 40px 48px;
     align-items: center;
 }
 
 .perfil img {
     border-radius: 12px;
+}
+
+.imagen-secundaria {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: 480px;
 }
 
 .lista {
@@ -183,8 +322,8 @@ main {
 /* Portafolio */
 .galeria {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 32px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
 }
 
 .proyecto {
@@ -195,22 +334,37 @@ main {
     border-radius: 12px;
 }
 
+.proyecto h2 {
+    font-size: 20px;
+}
+
 .proyecto img {
     width: 100%;
-    border-radius: 8px;
     margin-bottom: 12px;
+    border-radius: 8px;
 }
 
 /* Contacto */
 .contacto {
     display: grid;
-    grid-template-columns: 1fr 1.3fr;
+    grid-template-columns: 1.3fr 1fr;
     gap: 56px;
 }
 
-.datos img {
+.datos video {
     width: 100%;
+    margin-bottom: 12px;
     border-radius: 8px;
+    background-color: #1B2A41;
+}
+
+.como-llegar {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 44px;
+    margin-bottom: 12px;
+    font-weight: 600;
 }
 
 .formulario {
@@ -232,7 +386,7 @@ main {
     width: 100%;
     padding: 10px 12px;
     font-family: "Open Sans", Arial, sans-serif;
-    font-size: 15px;
+    font-size: 16px;
     border: 2px solid #D9DEE5;
     border-radius: 8px;
 }
@@ -265,4 +419,338 @@ main {
 .redes {
     display: flex;
     gap: 12px;
+}
+
+.pie a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    min-height: 44px;
+}
+
+/* ==========================================================
+   CELULAR EN VERTICAL (PORTRAIT)
+   ========================================================== */
+@media (max-width: 767px) and (orientation: portrait) {
+
+    /* Encabezado fijo con menú hamburguesa */
+    .cabecera {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        padding: 10px 16px;
+    }
+
+    #logo {
+        width: 96px;
+        height: 38px;
+    }
+
+    .menu-boton {
+        display: flex;
+    }
+
+    .menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: #FFFFFF;
+        box-shadow: 0 8px 16px rgba(27, 42, 65, 0.15);
+    }
+
+    .menu.abierto {
+        display: block;
+    }
+
+    .menu ul {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .menu a {
+        padding: 14px 24px;
+        font-size: 17px;
+        border-bottom: 1px solid #E3EAF2;
+    }
+
+    .menu a:hover,
+    .menu a.activo {
+        border-bottom: 1px solid #E3EAF2;
+        border-left: 5px solid #0F7C6E;
+        background-color: #F5F7FA;
+    }
+
+    /* Títulos y textos */
+    main {
+        padding: 24px 16px 32px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    .seccion {
+        margin-bottom: 32px;
+    }
+
+    /* Home: una sola columna */
+    .caja-bienvenida {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        margin-top: 16px;
+        padding: 16px;
+        text-align: center;
+    }
+
+    .texto-bienvenida p {
+        font-size: 15px;
+        text-align: left;
+    }
+
+    /* Carrusel: una tarjeta al centro y las laterales asomándose */
+    .tarjeta-proyecto {
+        flex: 0 0 100%;
+    }
+
+    .carrusel-pista {
+        padding: 8px 14%;
+        scroll-padding: 0 14%;
+    }
+
+    .carrusel-flecha {
+        width: 40px;
+        height: 40px;
+    }
+
+    .anterior {
+        left: 0;
+    }
+
+    .siguiente {
+        right: 0;
+    }
+
+    /* Sobre mí: imagen, texto e imagen */
+    .perfil {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .imagen-secundaria {
+        width: 100%;
+    }
+
+    /* Servicios: imagen arriba y texto abajo */
+    .servicio,
+    .servicio-invertido {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+        padding: 16px;
+    }
+
+    .servicio img {
+        width: 100%;
+    }
+
+    /* Portafolio: una columna */
+    .galeria {
+        grid-template-columns: 1fr;
+    }
+
+    /* Contacto: formulario primero y luego el video */
+    .contacto {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .formulario {
+        grid-template-columns: 44px 1fr;
+        gap: 12px;
+        padding: 20px 16px;
+    }
+
+    .etiqueta-texto,
+    .formulario textarea {
+        grid-column: 1 / -1;
+    }
+
+    .formulario .boton-primario {
+        grid-column: 1 / -1;
+        justify-self: center;
+        width: 60%;
+    }
+
+    /* Pie: chat a la izquierda y redes a la derecha */
+    .pie {
+        flex-wrap: wrap;
+        padding: 12px 16px;
+    }
+
+    .chat {
+        order: 1;
+    }
+
+    .redes {
+        order: 2;
+    }
+
+    .pie p {
+        order: 3;
+        flex-basis: 100%;
+        margin-top: 4px;
+        font-size: 12px;
+        text-align: center;
+    }
+}
+
+/* ==========================================================
+   CELULAR EN HORIZONTAL (LANDSCAPE) - propuesta propia
+   ========================================================== */
+@media (orientation: landscape) and (max-height: 500px) {
+
+    /* Menú horizontal compacto, sin hamburguesa */
+    .cabecera {
+        padding: 6px 24px;
+    }
+
+    #logo {
+        width: 84px;
+        height: 34px;
+    }
+
+    .menu ul {
+        gap: 18px;
+    }
+
+    .menu a {
+        padding: 10px 0 4px;
+        font-size: 14px;
+    }
+
+    /* Aprovechar el ancho de la pantalla */
+    main {
+        padding: 16px 32px 24px;
+    }
+
+    h1 {
+        font-size: 24px;
+        margin-bottom: 12px;
+    }
+
+    h2 {
+        font-size: 19px;
+    }
+
+    .seccion {
+        margin-bottom: 24px;
+    }
+
+    /* Home: imagen a la izquierda y texto a la derecha */
+    .caja-bienvenida {
+        grid-template-columns: 0.8fr 1.2fr;
+        gap: 24px;
+        margin-top: 8px;
+        padding: 20px 24px;
+    }
+
+    .texto-bienvenida p {
+        font-size: 14px;
+    }
+
+    .boton-primario {
+        margin-top: 4px;
+        padding: 10px 26px;
+    }
+
+    /* Carrusel: dos tarjetas y media a la vista */
+    .tarjeta-proyecto {
+        flex: 0 0 38%;
+    }
+
+    .anterior {
+        left: -12px;
+    }
+
+    .siguiente {
+        right: -12px;
+    }
+
+    /* Sobre mí: dos columnas */
+    .perfil {
+        gap: 20px 32px;
+    }
+
+    .imagen-secundaria {
+        width: 60%;
+    }
+
+    /* Servicios: imagen pequeña junto al texto */
+    .servicio {
+        gap: 24px;
+        padding: 16px;
+        margin-bottom: 16px;
+    }
+
+    .servicio img {
+        width: 180px;
+    }
+
+    /* Portafolio: cuatro columnas compactas */
+    .galeria {
+        gap: 12px;
+    }
+
+    .proyecto {
+        padding: 10px;
+    }
+
+    .proyecto h2 {
+        font-size: 15px;
+    }
+
+    .proyecto p {
+        font-size: 13px;
+    }
+
+    /* Contacto: formulario y video lado a lado */
+    .contacto {
+        grid-template-columns: 1.2fr 1fr;
+        gap: 24px;
+    }
+
+    .formulario {
+        grid-template-columns: 44px 1fr;
+        gap: 10px;
+        padding: 16px;
+    }
+
+    .etiqueta-texto,
+    .formulario textarea {
+        grid-column: 1 / -1;
+    }
+
+    .formulario textarea {
+        height: 70px;
+    }
+
+    .formulario .boton-primario {
+        justify-self: end;
+    }
+
+    /* Pie compacto */
+    .pie {
+        padding: 6px 24px;
+    }
+
+    .pie p {
+        font-size: 12px;
+    }
 }

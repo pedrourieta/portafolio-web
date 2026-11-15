@@ -6,17 +6,21 @@
     <meta name="description" content="Sitio personal de Pedro Urieta, diseñador de sitios web.">
     <title>Inicio | Pedro Urieta - Diseñador Web</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
     <header class="cabecera">
         <a href="index.html"><img id="logo" src="img/logo.svg" alt="Logotipo de Pedro Urieta, diseñador web"></a>
-        <nav class="menu">
+        <button class="menu-boton" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu-principal">
+            <span></span><span></span><span></span>
+        </button>
+        <nav class="menu" id="menu-principal" aria-label="Menú principal">
             <ul>
-            <li><a href="index.html" class="activo">Home</a></li>
-            <li><a href="sobre-mi.html">Sobre mí</a></li>
-            <li><a href="servicios.html">Servicios</a></li>
-            <li><a href="portafolio.html">Portafolio</a></li>
-            <li><a href="contacto.html">Contacto</a></li>
+                <li><a href="index.html" class="activo" aria-current="page">Home</a></li>
+                <li><a href="sobre-mi.html">Sobre mí</a></li>
+                <li><a href="servicios.html">Servicios</a></li>
+                <li><a href="portafolio.html">Portafolio</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
             </ul>
         </nav>
     </header>
@@ -25,10 +29,44 @@
         <section class="seccion">
             <h1>Pedro Urieta</h1>
             <div class="caja-bienvenida">
-                <h2>Diseño sitios web claros, rápidos y fáciles de usar</h2>
-                <p>Soy estudiante de TSU en Desarrollo de Software Multiplataforma en la UTEZ. Ayudo a personas y pequeños negocios a tener presencia en internet con páginas ordenadas, legibles y con una imagen profesional.</p>
-                <a href="contacto.html" class="boton-primario">Contratar ahora</a>
+                <img class="imagen-inicio" src="img/inicio.svg" alt="Ilustración de una computadora mostrando el diseño de un sitio web">
+                <div class="texto-bienvenida">
+                    <h2>Diseño sitios web claros, rápidos y fáciles de usar</h2>
+                    <p>Soy estudiante de TSU en Desarrollo de Software Multiplataforma en la UTEZ. Ayudo a personas y pequeños negocios a tener presencia en internet con páginas ordenadas, legibles y con una imagen profesional.</p>
+                    <a href="contacto.html" class="boton-primario">Contratar ahora</a>
+                </div>
             </div>
+        </section>
+
+        <section class="seccion proyectos" aria-labelledby="titulo-proyectos">
+            <h2 id="titulo-proyectos">Proyectos</h2>
+            <div class="carrusel">
+                <button class="carrusel-flecha anterior" type="button" aria-label="Ver proyecto anterior">&#10094;</button>
+                <div class="carrusel-pista">
+                    <article class="tarjeta-proyecto">
+                        <img src="img/proyecto1.svg" alt="Captura ilustrativa de la aplicación RunTrack">
+                        <h3>RunTrack</h3>
+                        <p>App de monitoreo deportivo.</p>
+                    </article>
+                    <article class="tarjeta-proyecto">
+                        <img src="img/proyecto2.svg" alt="Captura ilustrativa de una tienda en línea">
+                        <h3>Tienda en línea</h3>
+                        <p>Maqueta de comercio electrónico.</p>
+                    </article>
+                    <article class="tarjeta-proyecto">
+                        <img src="img/proyecto3.svg" alt="Captura ilustrativa de un panel de control con gráficas">
+                        <h3>Panel de control</h3>
+                        <p>Tablero con gráficas de ventas.</p>
+                    </article>
+                    <article class="tarjeta-proyecto">
+                        <img src="img/proyecto4.svg" alt="Captura ilustrativa de una página de aterrizaje">
+                        <h3>Página de aterrizaje</h3>
+                        <p>Sitio promocional de una sola página.</p>
+                    </article>
+                </div>
+                <button class="carrusel-flecha siguiente" type="button" aria-label="Ver proyecto siguiente">&#10095;</button>
+            </div>
+            <p class="texto-centrado"><a href="portafolio.html">Ver todo el portafolio</a></p>
         </section>
     </main>
 
@@ -38,7 +76,7 @@
             <a href="https://www.instagram.com/" target="_blank"><img src="img/instagram.svg" alt="Ícono de Instagram"></a>
         </div>
         <p>&copy; 2026 Pedro Ezequiel Urieta Fuentes</p>
-        <a href="https://wa.me/527771234567" target="_blank"><img src="img/chat.svg" alt="Ícono de chat para enviar un mensaje"></a>
+        <a class="chat" href="https://wa.me/527771234567" target="_blank"><img src="img/chat.svg" alt="Ícono de chat para enviar un mensaje"></a>
     </footer>
 </body>
 </html>
